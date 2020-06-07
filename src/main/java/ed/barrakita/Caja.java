@@ -12,13 +12,14 @@ import java.util.ArrayList;
  * @author andyloz
  */
 public class Caja implements Item {
+    String nombre;
     ArrayList<Producto> items;
 
     public Caja() {
         this.items = new ArrayList<>();
     }
 
-    public Caja(Producto... items) {
+    public Caja(String nombre, Producto... items) {
         this.items = new ArrayList<>();
         
         for (int i = 0; i < items.length; i++) {
@@ -38,6 +39,6 @@ public class Caja implements Item {
     public double getPrecio() {
         return this.items.stream()
                 .mapToDouble(p -> p.getPrecio())
-                .reduce(Double::sum).orElse(0);
+                .reduce(Double::sum).orElse(0) - 2;
     }
 }
