@@ -25,12 +25,7 @@ public class Programa {
         
         bienvenida();
         
-        System.out.println("Seleccione una caja. Una vez seleccionada podra comprarla o ver sus productos\n"
-                + "  (1) Caja 1\n"
-                + "  (2) Caja 2\n"
-                + "  (3) Caja 3\n"
-                + "  (4) Caja 4\n");
-        int opcion = seleccionScInt(1, 4);
+        System.out.println("Seleccione una caja. Una vez seleccionada podra comprarla o ver sus productos\n");
         
     }
     
@@ -122,5 +117,22 @@ public class Programa {
         } while (opcion == ini - 1);
         
         return opcion;
+    }
+    
+    public static Caja seleccionCaja(List<Caja> cajas) {
+        for (int i = 0; i < cajas.size(); i++) {
+            Caja get = cajas.get(i);
+            System.out.println("(" + i+1 + ")" + get.getNombre());
+        }
+        System.out.println("(" + cajas.size()+1 + ") Caja personalizada");
+        
+        
+        int opcion = seleccionScInt(1, cajas.size()+1);
+        
+        if (opcion == cajas.size()+1) {
+            return null;
+        }
+        
+        return cajas.get(opcion);
     }
 }
