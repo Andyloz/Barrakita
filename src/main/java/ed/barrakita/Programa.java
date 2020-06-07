@@ -26,13 +26,10 @@ public class Programa {
         bienvenida();
         
         System.out.println("Seleccione una caja. Una vez seleccionada podra comprarla o ver sus productos\n");
-        
+        System.out.println(seleccionCaja(cajas).getNombre());
     }
     
     public static void cargaProductos(List<Caja> cajas, List<Producto> productos) {
-        cajas = new ArrayList<>();
-        productos = new ArrayList<>();
-
         productos.add(new Producto("Toallitas", 2));                  // 0
         productos.add(new Producto("Papel higienico", 2));            // 1
         productos.add(new Producto("Coca-Cola", 1.7));                // 2
@@ -121,18 +118,17 @@ public class Programa {
     
     public static Caja seleccionCaja(List<Caja> cajas) {
         for (int i = 0; i < cajas.size(); i++) {
-            Caja get = cajas.get(i);
-            System.out.println("(" + i+1 + ")" + get.getNombre());
+            Caja caja = cajas.get(i);
+            System.out.println("(" + (i+1) + ") " + caja.getNombre());
         }
-        System.out.println("(" + cajas.size()+1 + ") Caja personalizada");
+        System.out.println("(0) Caja personalizada");
         
         
-        int opcion = seleccionScInt(1, cajas.size()+1);
+        int opcion = seleccionScInt(0, cajas.size());
         
-        if (opcion == cajas.size()+1) {
+        if (opcion == 0) {
             return null;
         }
-        
-        return cajas.get(opcion);
+        return cajas.get(opcion-1);
     }
 }
