@@ -20,6 +20,7 @@ public class Caja implements Item {
     }
 
     public Caja(String nombre, Producto... items) {
+        this.nombre = nombre;
         this.items = new ArrayList<>();
         
         for (int i = 0; i < items.length; i++) {
