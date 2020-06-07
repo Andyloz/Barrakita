@@ -59,4 +59,8 @@ public class Caja implements Item {
     public ArrayList<Producto> getItems() {
         return items;
     }
+
+    public int getDescuento() {
+        return descuento;
+    }
 }
