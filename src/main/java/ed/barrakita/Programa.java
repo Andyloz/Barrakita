@@ -122,18 +122,25 @@ public class Programa {
         }
         
         int opcion;
+        String ok = "> ";
+        String error = "!! > ";
+        String prompt = ok;
         do {
             opcion = ini - 1;
-            System.out.print("> ");
+            System.out.print(prompt);
             
             try {
-                opcion = sc.nextInt();                
+                opcion = sc.nextInt();
             } catch (InputMismatchException e) {
                 sc.next();
+                prompt = error;
             }
             
             if (opcion < ini || opcion > fin) {
                 opcion = ini - 1;
+                prompt = error;
+            } else {
+                prompt = ok;
             }
         } while (opcion == ini - 1);
         
