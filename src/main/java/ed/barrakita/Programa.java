@@ -18,6 +18,8 @@ import java.util.Scanner;
 public class Programa {
     
     static Scanner sc = new Scanner(System.in);
+    static DecimalFormat dineroF = new DecimalFormat(".00€");
+    
     static ArrayList<Caja> cajas = new ArrayList<>();
     static ArrayList<Producto> productos = new ArrayList<>();
     
@@ -172,11 +174,10 @@ public class Programa {
         System.out.println("Seleccione los productos que quiera. Para terminar, escriba 0");
         System.out.println("-------------------------------------------------------------");
         
-        DecimalFormat df = new DecimalFormat(".00€");
         for (int i = 0; i < productos.size(); i++) {
             Producto p = productos.get(i);
             
-            String precio = df.format(p.getPrecio());
+            String precio = dineroF.format(p.getPrecio());
             System.out.println("("+ (i+1) +") " + p.getNombre() + " - " + precio);
         }
         
