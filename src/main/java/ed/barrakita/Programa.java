@@ -20,7 +20,7 @@ public class Programa {
     static ArrayList<Caja> cajas = new ArrayList<>();
     static ArrayList<Producto> productos = new ArrayList<>();
     
-    public static void cargaProductos(List<Caja> cajas, List<Producto> productos) {
+    public static void cargaProductos() {
         productos.add(new Producto("Toallitas", 2));                  // 0
         productos.add(new Producto("Papel higienico", 2));            // 1
         productos.add(new Producto("Coca-Cola", 1.7));                // 2
@@ -92,16 +92,16 @@ public class Programa {
     }
 
     public static void barraquita() {
-        cargaProductos(cajas, productos);
+        cargaProductos();
         
         System.out.println("Seleccione una caja. Una vez seleccionada podra comprarla o ver sus productos");
         System.out.println("¡¡¡ Ahorrese 2€ comprando una caja premontada !!!\n");
         Caja caja = seleccionCaja(cajas);
         
+        System.out.println("\n");
+        
         if (caja == null) {
-            
-        } else {
-            
+            caja = montarCaja();
         }
     }
     
@@ -161,5 +161,30 @@ public class Programa {
             return null;
         }
         return cajas.get(opcion-1);
+    }
+    
+    public static Caja montarCaja() {
+        Caja caja = new Caja();
+        
+        System.out.println("Seleccione los productos que quiera. Para terminar, escriba 0");
+        System.out.println("-------------------------------------------------------------");
+        
+        for (int i = 0; i < productos.size(); i++) {
+            Producto p = productos.get(i);
+            System.out.println("("+ (i+1) +") " + p.getNombre());
+        }
+        
+        int opcion;
+        do {
+            opcion = seleccionScInt(0, productos.size());
+            
+            if (opcion == 0) {
+                break;
+            }
+            
+            caja.add(productos.get(opcion - 1));
+        } while (true);
+        
+        return caja;
     }
 }
