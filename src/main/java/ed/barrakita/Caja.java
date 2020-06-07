@@ -15,7 +15,7 @@ import java.util.List;
 public class Caja implements Item {
     private String nombre;
     private ArrayList<Producto> items;
-    private int descuento;
+    private double descuento;
 
     public Caja() {
         this.nombre = "Personalizada";
@@ -60,7 +60,7 @@ public class Caja implements Item {
         return items;
     }
 
-    public int getDescuento() {
+    public double getDescuento() {
         return descuento;
     }
 }
