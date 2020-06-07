@@ -18,6 +18,7 @@ public class Caja implements Item {
     private int descuento;
 
     public Caja() {
+        this.nombre = "Personalizada";
         this.items = new ArrayList<>();
         this.descuento = 0;
     }
