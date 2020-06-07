@@ -10,8 +10,8 @@ package ed.barrakita;
  * @author andyloz
  */
 public class Producto implements Item, Cloneable {
-    String nombre;
-    double precio;
+    private String nombre;
+    private double precio;
 
     public Producto(String nombre, double precio) {
         this.nombre = nombre;

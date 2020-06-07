@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * @author andyloz
  */
 public class Caja implements Item {
-    String nombre;
-    ArrayList<Producto> items;
+    private String nombre;
+    private ArrayList<Producto> items;
 
     public Caja() {
         this.items = new ArrayList<>();
