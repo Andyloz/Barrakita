@@ -25,7 +25,7 @@ public class Caja implements Item {
         for (int i = 0; i < items.length; i++) {
             this.items.add(items[i]);
         }
-    }
+    }    
     
     public void add(Producto item) {
         this.items.add(item);
@@ -40,5 +40,13 @@ public class Caja implements Item {
         return this.items.stream()
                 .mapToDouble(p -> p.getPrecio())
                 .reduce(Double::sum).orElse(0) - 2;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public ArrayList<Producto> getItems() {
+        return items;
     }
 }
