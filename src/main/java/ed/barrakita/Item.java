@@ -10,5 +10,5 @@ package ed.barrakita;
  * @author andyloz
  */
 public interface Item {
-    
+    double getPrecio();
 }
