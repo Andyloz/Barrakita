@@ -6,6 +6,7 @@
 package ed.barrakita;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,19 +15,26 @@ import java.util.ArrayList;
 public class Caja implements Item {
     private String nombre;
     private ArrayList<Producto> items;
+    private int descuento;
 
     public Caja() {
         this.items = new ArrayList<>();
+        this.descuento = 0;
     }
 
     public Caja(String nombre, Producto... items) {
         this.nombre = nombre;
-        this.items = new ArrayList<>();
+        this.descuento = 2;
         
+        this.items = new ArrayList<>();
         for (int i = 0; i < items.length; i++) {
             this.items.add(items[i]);
         }
-    }    
+    }
+    
+    public List<Producto> getProductos() {
+        return this.items;
+    }
     
     public void add(Producto item) {
         this.items.add(item);
@@ -40,7 +48,7 @@ public class Caja implements Item {
     public double getPrecio() {
         return this.items.stream()
                 .mapToDouble(p -> p.getPrecio())
-                .reduce(Double::sum).orElse(0) - 2;
+                .reduce(Double::sum).orElse(0) - this.descuento;
     }
 
     public String getNombre() {
