@@ -9,7 +9,7 @@ package ed.barrakita;
  *
  * @author andyloz
  */
-public class Producto implements Item {
+public class Producto implements Item, Cloneable {
     String nombre;
     double precio;
 
@@ -33,5 +33,10 @@ public class Producto implements Item {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    @Override
+    protected Producto clone() {
+        return new Producto(this.nombre, this.precio);
     }
 }
