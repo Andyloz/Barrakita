@@ -7,6 +7,7 @@ package ed.barrakita;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -14,10 +15,28 @@ import java.util.Scanner;
  * @author andyloz
  */
 public class Programa {
+    
+    static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         ArrayList<Caja> cajas = new ArrayList<>();
         ArrayList<Producto> productos = new ArrayList<>();
+        cargaProductos(cajas, productos);
+        
+        bienvenida();
+        
+        System.out.println("Seleccione una caja. Una vez seleccionada podra comprarla o ver sus productos\n"
+                + "  (1) Caja 1\n"
+                + "  (2) Caja 2\n"
+                + "  (3) Caja 3\n"
+                + "  (4) Caja 4\n");
+        int opcion = seleccionScInt(1, 4);
+        
+    }
+    
+    public static void cargaProductos(List<Caja> cajas, List<Producto> productos) {
+        cajas = new ArrayList<>();
+        productos = new ArrayList<>();
 
         productos.add(new Producto("Toallitas", 2));                  // 0
         productos.add(new Producto("Papel higienico", 2));            // 1
@@ -68,7 +87,9 @@ public class Programa {
                 productos.get(3).clone(),
                 productos.get(4).clone(),
                 productos.get(5).clone()));
-
+    }
+    
+    public static void bienvenida() {
         System.out.println("  ____                       _    _ _        \n"
                 + " | __ )  __ _ _ __ _ __ __ _| | _(_) |_ __ _ \n"
                 + " |  _ \\ / _` | '__| '__/ _` | |/ / | __/ _` |\n"
@@ -76,19 +97,17 @@ public class Programa {
                 + " |____/ \\__,_|_|  |_|  \\__,_|_|\\_\\_|\\__\\__,_|\n"
                 + "                                             ");
         System.out.println("---------------------------------------------\n");
-        
-        
-        Scanner sc = new Scanner(System.in);
-        
-        System.out.println("Seleccione una caja. Una vez seleccionada podra comprarla o ver sus productos\n"
-                + "  (1) Caja 1\n"
-                + "  (1) Caja 2\n"
-                + "  (1) Caja 3\n"
-                + "  (1) Caja 4\n");
+    }
+    
+    public static int seleccionScInt(int ini, int fin) {
+        if (fin <= ini) {
+            throw new IllegalArgumentException(
+                    "Fin(" + fin +") mayor o igual que inicio(" + ini + ")");
+        }
         
         int opcion;
         do {
-            opcion = 0;
+            opcion = ini - 1;
             System.out.print("> ");
             
             try {
@@ -97,9 +116,11 @@ public class Programa {
                 sc.next();
             }
             
-            if (opcion < 1 || opcion > 4) {
-                opcion = 0;
+            if (opcion < ini || opcion > fin) {
+                opcion = ini - 1;
             }
-        } while (opcion == 0);
+        } while (opcion == ini - 1);
+        
+        return opcion;
     }
 }
