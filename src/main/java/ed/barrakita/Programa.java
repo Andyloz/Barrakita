@@ -99,14 +99,17 @@ public class Programa {
     public static void barraquita() {
         System.out.println("Seleccione una caja. Una vez seleccionada podra comprarla o ver sus productos");
         System.out.println("¡¡¡ Ahorrese 2€ comprando una caja premontada !!!\n");
-        Caja caja = seleccionCaja(cajas);
         
+        Caja caja = seleccionCaja(cajas);
         System.out.println("\n");
         
         if (caja == null) {
             caja = montarCaja();
+            System.out.println("\n");
         }
         
+        describirCaja(caja);
+        System.out.println("\n");
         
     }
     
@@ -193,5 +196,18 @@ public class Programa {
         } while (true);
         
         return caja;
+    }
+    
+    public static void describirCaja(Caja caja) {
+        System.out.println(caja.getNombre());
+        System.out.println("-------------------------------");
+        
+        caja.getItems()
+                .forEach(p -> System.out.println(p.getNombre()
+                        + " - " + dineroF.format(p.getPrecio())));
+        System.out.println();
+        
+        System.out.println("Total: " + dineroF.format(caja.getPrecio())
+                + " (" + dineroF.format(caja.getDescuento()) + " de descuento)");
     }
 }
