@@ -18,7 +18,7 @@ import java.util.Scanner;
 public class Programa {
     
     static Scanner sc = new Scanner(System.in);
-    static DecimalFormat dineroF = new DecimalFormat(".00€");
+    static DecimalFormat dineroF = new DecimalFormat("0.00€");
     
     static ArrayList<Caja> cajas = new ArrayList<>();
     static ArrayList<Producto> productos = new ArrayList<>();
