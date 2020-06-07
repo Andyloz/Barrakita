@@ -111,6 +111,18 @@ public class Programa {
         describirCaja(caja);
         System.out.println("\n");
         
+        System.out.println("¿Que quiere hacer?\n\n"
+                + "(1) Comprar\n"
+                + "(2) Descartar");
+        int opcionCompra = seleccionScInt(1, 2);
+        System.out.println("\n");
+        
+        if (opcionCompra == 1) {
+            comprar(caja);
+            System.out.println("\n");
+        }
+        
+        System.out.println("Gracias por su visita !!!!");
     }
     
     public static void bienvenida() {
@@ -209,5 +221,9 @@ public class Programa {
         
         System.out.println("Total: " + dineroF.format(caja.getPrecio())
                 + " (" + dineroF.format(caja.getDescuento()) + " de descuento)");
+    }
+    
+    public static void comprar(Caja caja) {
+        System.out.println("Caja " + caja.getNombre() + " comprada.");
     }
 }
