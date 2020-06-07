@@ -5,6 +5,7 @@
  */
 package ed.barrakita;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -103,6 +104,8 @@ public class Programa {
         if (caja == null) {
             caja = montarCaja();
         }
+        
+        
     }
     
     public static void bienvenida() {
@@ -169,9 +172,12 @@ public class Programa {
         System.out.println("Seleccione los productos que quiera. Para terminar, escriba 0");
         System.out.println("-------------------------------------------------------------");
         
+        DecimalFormat df = new DecimalFormat(".00€");
         for (int i = 0; i < productos.size(); i++) {
             Producto p = productos.get(i);
-            System.out.println("("+ (i+1) +") " + p.getNombre());
+            
+            String precio = df.format(p.getPrecio());
+            System.out.println("("+ (i+1) +") " + p.getNombre() + " - " + precio);
         }
         
         int opcion;
