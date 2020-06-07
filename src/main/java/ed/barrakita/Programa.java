@@ -74,6 +74,8 @@ public class Programa {
     }
     
     public static void main(String[] args) {
+        cargaProductos();
+        
         while (true) {
             bienvenida();
             
@@ -93,8 +95,6 @@ public class Programa {
     }
 
     public static void barraquita() {
-        cargaProductos();
-        
         System.out.println("Seleccione una caja. Una vez seleccionada podra comprarla o ver sus productos");
         System.out.println("¡¡¡ Ahorrese 2€ comprando una caja premontada !!!\n");
         Caja caja = seleccionCaja(cajas);
