@@ -17,17 +17,8 @@ import java.util.Scanner;
 public class Programa {
     
     static Scanner sc = new Scanner(System.in);
-
-    public static void main(String[] args) {
-        ArrayList<Caja> cajas = new ArrayList<>();
-        ArrayList<Producto> productos = new ArrayList<>();
-        cargaProductos(cajas, productos);
-        
-        bienvenida();
-        
-        System.out.println("Seleccione una caja. Una vez seleccionada podra comprarla o ver sus productos\n");
-        System.out.println(seleccionCaja(cajas).getNombre());
-    }
+    static ArrayList<Caja> cajas = new ArrayList<>();
+    static ArrayList<Producto> productos = new ArrayList<>();
     
     public static void cargaProductos(List<Caja> cajas, List<Producto> productos) {
         productos.add(new Producto("Toallitas", 2));                  // 0
@@ -81,8 +72,41 @@ public class Programa {
                 productos.get(5).clone()));
     }
     
+    public static void main(String[] args) {
+        while (true) {
+            bienvenida();
+            
+            System.out.println("¿Que quiere hacer?\n\n"
+                    + "(1) Comprar\n"
+                    + "(2) Salir");
+            
+            switch(seleccionScInt(1, 2)) {
+                case 1:
+                    System.out.println("\n");
+                    barraquita();
+                    break;
+                case 2:
+                    System.exit(0);
+            }
+        }
+    }
+
+    public static void barraquita() {
+        cargaProductos(cajas, productos);
+        
+        System.out.println("Seleccione una caja. Una vez seleccionada podra comprarla o ver sus productos");
+        System.out.println("¡¡¡ Ahorrese 2€ comprando una caja premontada !!!\n");
+        Caja caja = seleccionCaja(cajas);
+        
+        if (caja == null) {
+            
+        } else {
+            
+        }
+    }
+    
     public static void bienvenida() {
-        System.out.println("  ____                       _    _ _        \n"
+        System.out.println("\n\n  ____                       _    _ _        \n"
                 + " | __ )  __ _ _ __ _ __ __ _| | _(_) |_ __ _ \n"
                 + " |  _ \\ / _` | '__| '__/ _` | |/ / | __/ _` |\n"
                 + " | |_) | (_| | |  | | | (_| |   <| | || (_| |\n"
