@@ -12,11 +12,10 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *
+ * Clase de ejecucion del programa
  * @author andyloz
  */
 public class Programa {
-    
     static Scanner sc = new Scanner(System.in);
     static DecimalFormat dineroF = new DecimalFormat("0.00€");
     
@@ -75,6 +74,11 @@ public class Programa {
                 productos.get(5).clone()));
     }
     
+    /**
+     * En el main se controla si se quiere continuar con el ciclo de compra de
+     * forma indefinida o si por el contrario se desea terminar el programa
+     * @param args Los parametros introducidos no se utilizaran
+     */
     public static void main(String[] args) {
         cargaProductos();
         
@@ -96,6 +100,9 @@ public class Programa {
         }
     }
 
+    /**
+     * Maneja el flujo de la venta de una caja   
+     */
     public static void barraquita() {
         System.out.println("Seleccione una caja. Una vez seleccionada podra comprarla o ver sus productos");
         System.out.println("¡¡¡ Ahorrese 2€ comprando una caja premontada !!!\n");
@@ -104,7 +111,7 @@ public class Programa {
         System.out.println("\n");
         
         if (caja == null) {
-            caja = montarCaja();
+            caja = montarCaja(productos);
             System.out.println("\n");
         }
         
@@ -125,6 +132,9 @@ public class Programa {
         System.out.println("Gracias por su visita !!!!");
     }
     
+    /**
+     * Imprime por pantalla la bienvenida a la aplicacion
+     */
     public static void bienvenida() {
         System.out.println("\n\n  ____                       _    _ _        \n"
                 + " | __ )  __ _ _ __ _ __ __ _| | _(_) |_ __ _ \n"
@@ -135,6 +145,14 @@ public class Programa {
         System.out.println("---------------------------------------------\n");
     }
     
+    /**
+     * Pide al usuario que introduzca un numero por teclado.
+     * Mostrara un indicador de error si ha introducido un numero no valido y
+     * hay que repetir la entrada
+     * @param ini Inicio (inclusivo) del rango de numeros validos
+     * @param fin Fin (inclusivo) del rango de numeros validos
+     * @return El numero introducido cuando sea valido
+     */
     public static int seleccionScInt(int ini, int fin) {
         if (fin <= ini) {
             throw new IllegalArgumentException(
@@ -167,6 +185,12 @@ public class Programa {
         return opcion;
     }
     
+    /**
+     * Pide al usuario que seleccione una caja de las que se mostraran en
+     * pantalla.
+     * @param cajas Lista de cajas de las que elegir
+     * @return La caja escogida
+     */
     public static Caja seleccionCaja(List<Caja> cajas) {
         for (int i = 0; i < cajas.size(); i++) {
             Caja caja = cajas.get(i);
@@ -183,7 +207,15 @@ public class Programa {
         return cajas.get(opcion-1);
     }
     
-    public static Caja montarCaja() {
+    /**
+     * Pide al usuario que seleccione interactivamente los productos que quiere
+     * para su caja personalizada.
+     * Este metodo se apoya en seleccionScInt para la seleccion de productos
+     * @param productos La lista de productos de los que elegir
+     * @return La caja con los productos seleccionados
+     * @see seleccionScInt(int ini, int fin)
+     */
+    public static Caja montarCaja(List<Producto> productos) {
         Caja caja = new Caja();
         
         System.out.println("Seleccione los productos que quiera. Para terminar, escriba 0");
@@ -210,6 +242,11 @@ public class Programa {
         return caja;
     }
     
+    /**
+     * Imprime por pantalla un resumen de la caja: sus productos, con su
+     * respectivo precio, el precio total y el descuento aplicado
+     * @param caja La caja a describir
+     */
     public static void describirCaja(Caja caja) {
         System.out.println(caja.getNombre());
         System.out.println("-------------------------------");
@@ -220,9 +257,14 @@ public class Programa {
         System.out.println();
         
         System.out.println("Total: " + dineroF.format(caja.getPrecio())
-                + " (" + dineroF.format(caja.getDescuento()) + " de descuento)");
+                + " (" + dineroF.format(caja.getDescuento()) + " de descuento aplicado)");
     }
     
+    /**
+     * Muestra un proceso de compra de ejemplo. Aunque el metodo esta enfocado
+     * a tramitar la compra desde este
+     * @param caja La caja a comprar
+     */
     public static void comprar(Caja caja) {
         System.out.println("Caja " + caja.getNombre() + " comprada.");
     }

@@ -6,13 +6,19 @@
 package ed.barrakita;
 
 /**
- *
+ * Objetos a almacenar en Cajas
  * @author andyloz
+ * @see Caja
  */
 public class Producto implements Item, Cloneable {
     private String nombre;
     private double precio;
 
+    /**
+     * Construye un producto totalmente formado
+     * @param nombre Nombre del producto
+     * @param precio Precio del producto
+     */
     public Producto(String nombre, double precio) {
         this.nombre = nombre;
         this.precio = precio;

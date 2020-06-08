@@ -10,5 +10,9 @@ package ed.barrakita;
  * @author andyloz
  */
 public interface Item {
+    /**
+     * Obtiene el precio del producto o su conjunto
+     * @return El precio total
+     */
     double getPrecio();
 }
